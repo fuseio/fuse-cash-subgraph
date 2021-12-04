@@ -1,0 +1,95 @@
+#
+# Provides information about a fuse.cash wallet
+#
+type Wallet @entity {
+  " Equals to: <accountAddress>"
+  id: ID!
+
+  address: Bytes!
+
+  owner: Bytes!
+
+  "Equals the native balance of this wallet"
+  balance: BigInt!
+
+  " Token balances that this wallet holds "
+  balances: [WalletBalance!]! @derivedFrom(field: "account")
+}
+
+#
+# Current token balance of a particular Ethereum account
+#
+type WalletBalance @entity {
+  " Equals to: <walletAddress>-<tokenAddress>"
+  id: ID!
+
+  " Wallet address "
+  account: Wallet!
+
+  " Token address "
+  token: Token!
+
+  " Current wallet balance "
+  amount: BigInt!
+
+  " Block number in which the balance was last modified "
+  block: BigInt
+
+  " Last modified timestamp in seconds "
+  modified: BigInt
+
+  " Hash of the last transaction that modified the balance "
+  transaction: Bytes
+}
+
+
+#
+# Provides information about an ERC20 token
+#
+type Token @entity {
+  id: ID!
+
+  " Token address "
+  address: Bytes!
+
+  " Number of decimals the token uses "
+  decimals: Int!
+
+  " Human-readable name of the token "
+  name: String!
+
+  " Symbol of the token "
+  symbol: String!
+
+  " Total number of transfer events (related to fuse.cash wallets)"
+  transferEventCount: BigInt!
+
+  " List of token events "
+  events: [TransferEvent!]! @derivedFrom(field: "token")
+}
+
+
+type TransferEvent @entity {
+  id: ID!
+
+  " Token address "
+  token: Token!
+
+  " Quantity of tokens transferred "
+  amount: BigInt!
+
+  " Transaction sender address "
+  from: Bytes!
+
+  " Address of destination account "
+  to: Bytes!
+
+  " Block number "
+  block: BigInt!
+
+  " Event timestamp "
+  timestamp: BigInt!
+
+  " Transaction hash "
+  transaction: Bytes!
+}

@@ -1,0 +1,16 @@
+{
+  "name": "one-contract-many-instances",
+  "license": "UNLICENSED",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ t0mcr8se/fuse-cash-subgraph",
+    "create-local": "graph create --node http://localhost:8020/ t0mcr8se/fuse-cash-subgraph",
+    "remove-local": "graph remove --node http://localhost:8020/ t0mcr8se/fuse-cash-subgraph",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 t0mcr8se/fuse-cash-subgraph"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.23.0",
+    "@graphprotocol/graph-ts": "0.22.1"
+  }
+}

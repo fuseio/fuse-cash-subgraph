@@ -1,0 +1,267 @@
+[
+  {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "payable": false,
+    "outputs": [],
+    "name": "changeModuleRegistry",
+    "inputs": [{ "type": "address", "name": "_moduleRegistry" }],
+    "constant": false
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "address", "name": "" }],
+    "name": "getENSReverseRegistrar",
+    "inputs": [],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "pure",
+    "payable": false,
+    "outputs": [],
+    "name": "init",
+    "inputs": [{ "type": "address", "name": "_wallet" }],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "payable": false,
+    "outputs": [],
+    "name": "addManager",
+    "inputs": [{ "type": "address", "name": "_manager" }],
+    "constant": false
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "address", "name": "" }],
+    "name": "getENSRegistry",
+    "inputs": [],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "payable": false,
+    "outputs": [],
+    "name": "createCounterfactualWallet",
+    "inputs": [
+      { "type": "address", "name": "_owner" },
+      { "type": "address[]", "name": "_modules" },
+      { "type": "string", "name": "_label" },
+      { "type": "bytes32", "name": "_salt" }
+    ],
+    "constant": false
+  },
+  {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "payable": false,
+    "outputs": [],
+    "name": "revokeManager",
+    "inputs": [{ "type": "address", "name": "_manager" }],
+    "constant": false
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "address", "name": "" }],
+    "name": "ensManager",
+    "inputs": [],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "bytes32", "name": "" }],
+    "name": "ADDR_REVERSE_NODE",
+    "inputs": [],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "address", "name": "" }],
+    "name": "walletImplementation",
+    "inputs": [],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "address", "name": "" }],
+    "name": "owner",
+    "inputs": [],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "payable": false,
+    "outputs": [],
+    "name": "changeENSManager",
+    "inputs": [{ "type": "address", "name": "_ensManager" }],
+    "constant": false
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "address", "name": "" }],
+    "name": "resolveEns",
+    "inputs": [{ "type": "bytes32", "name": "_node" }],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "payable": false,
+    "outputs": [],
+    "name": "changeOwner",
+    "inputs": [{ "type": "address", "name": "_newOwner" }],
+    "constant": false
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "address", "name": "" }],
+    "name": "ensResolver",
+    "inputs": [],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "payable": false,
+    "outputs": [],
+    "name": "createWallet",
+    "inputs": [
+      { "type": "address", "name": "_owner" },
+      { "type": "address[]", "name": "_modules" },
+      { "type": "string", "name": "_label" }
+    ],
+    "constant": false
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "address", "name": "" }],
+    "name": "moduleRegistry",
+    "inputs": [],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "address", "name": "" }],
+    "name": "getAddressForCounterfactualWallet",
+    "inputs": [
+      { "type": "address", "name": "_owner" },
+      { "type": "address[]", "name": "_modules" },
+      { "type": "bytes32", "name": "_salt" }
+    ],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "payable": false,
+    "outputs": [],
+    "name": "changeWalletImplementation",
+    "inputs": [{ "type": "address", "name": "_walletImplementation" }],
+    "constant": false
+  },
+  {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "payable": false,
+    "outputs": [],
+    "name": "changeENSResolver",
+    "inputs": [{ "type": "address", "name": "_ensResolver" }],
+    "constant": false
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "bool", "name": "" }],
+    "name": "managers",
+    "inputs": [{ "type": "address", "name": "" }],
+    "constant": true
+  },
+  {
+    "type": "constructor",
+    "stateMutability": "nonpayable",
+    "payable": false,
+    "inputs": [
+      { "type": "address", "name": "_ensRegistry" },
+      { "type": "address", "name": "_moduleRegistry" },
+      { "type": "address", "name": "_walletImplementation" },
+      { "type": "address", "name": "_ensManager" },
+      { "type": "address", "name": "_ensResolver" }
+    ]
+  },
+  {
+    "type": "event",
+    "name": "ModuleRegistryChanged",
+    "inputs": [{ "type": "address", "name": "addr", "indexed": false }],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "WalletImplementationChanged",
+    "inputs": [{ "type": "address", "name": "addr", "indexed": false }],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "ENSManagerChanged",
+    "inputs": [{ "type": "address", "name": "addr", "indexed": false }],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "ENSResolverChanged",
+    "inputs": [{ "type": "address", "name": "addr", "indexed": false }],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "WalletCreated",
+    "inputs": [
+      { "type": "address", "name": "_wallet", "indexed": true },
+      { "type": "address", "name": "_owner", "indexed": true }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "ManagerAdded",
+    "inputs": [{ "type": "address", "name": "_manager", "indexed": true }],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "ManagerRevoked",
+    "inputs": [{ "type": "address", "name": "_manager", "indexed": true }],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "OwnerChanged",
+    "inputs": [{ "type": "address", "name": "_newOwner", "indexed": true }],
+    "anonymous": false
+  }
+]

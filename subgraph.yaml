@@ -1,0 +1,72 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - name: GoodDollar
+    kind: ethereum/contract
+    network: fuse
+    source:
+      abi: ERC20
+      address: '0x495d133B938596C9984d462F007B676bDc57eCEC'
+      startBlock: 6246330
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      file: ./src/mappings/mapping.ts
+      entities:
+        - Token
+        - TransferEvent
+      abis:
+        - name: ERC20
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: 'Transfer(indexed address,indexed address,uint256)'
+          handler: handleTransfer
+    # Wallet Factory data source for adding new wallets
+  - name: WalletFactory
+    kind: ethereum/contract
+    network: fuse
+    source:
+      abi: WalletFactory
+      address: '0x2FE1F9bBC9CE8Ea4E00F89FC1a8936DE6934b63D'
+      startBlock: 3820385
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      file: ./src/mappings/mapping.ts
+      entities:
+        - Account
+      abis:
+        - name: WalletFactory
+          file: ./abis/WalletFactory.json
+        # - name: BaseWallet
+        #   file: ./abis/BaseWallet.json
+      eventHandlers:
+        - event: 'WalletCreated(indexed address,indexed address)'
+          handler: handleWalletCreated
+
+templates:
+  - name: BaseWallet
+    kind: ethereum/contract
+    network: fuse
+    source:
+      abi: BaseWallet
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      file: ./src/mappings/mapping.ts
+      entities:
+        - AccountBalance
+      abis:
+        - name: BaseWallet
+          file: ./abis/BaseWallet.json
+      eventHandlers:
+        - event: Received(indexed uint256,indexed address,bytes)
+          handler: handleWalletReceive
+        - event: Invoked(indexed address,indexed address,indexed uint256,bytes)
+          handler: handleWalletInvoked
+        - event: OwnerChanged(address)
+          handler: handleWalletOwnerChanged
