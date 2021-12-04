@@ -93,3 +93,18 @@ type TransferEvent @entity {
   " Transaction hash "
   transaction: Bytes!
 }
+
+#
+# Entity to track Received and Invoked and OwnerChanged Events
+#
+type WalletActivity @entity {
+  id: ID!
+
+  wallet: Wallet!
+
+  activityType: String!
+
+  target: Bytes!
+
+  amount: BigInt!
+}

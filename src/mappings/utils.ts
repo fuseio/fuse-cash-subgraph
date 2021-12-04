@@ -4,6 +4,7 @@ import {
   Token,
   TransferEvent,
   Wallet,
+  WalletActivity,
   WalletBalance,
 } from '../../generated/schema'
 import { ZERO } from '../helpers/number'
@@ -45,7 +46,7 @@ export function storeOrUpdateWalletBalance(
   wallet: Wallet,
   event: Transfer,
   multiplier: BigInt,
-) : void {
+): void {
   let walletBalanceId = walletAsset(wallet.address, event.address)
   let walletBalance = WalletBalance.load(walletBalanceId)
 
@@ -64,4 +65,19 @@ export function storeOrUpdateWalletBalance(
   )
 
   walletBalance.save()
+}
+
+export function storeWalletActivity(
+  txHash: string,
+  walletAddress: string,
+  activityType: string,
+  target: Address,
+  amount: BigInt,
+): void {
+  let walletActivity = new WalletActivity(txHash)
+  walletActivity.activityType = activityType
+  walletActivity.wallet = walletAddress
+  walletActivity.target = target
+  walletActivity.amount = amount
+  walletActivity.save()
 }

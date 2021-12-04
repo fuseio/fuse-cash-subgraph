@@ -10,8 +10,10 @@ import {
   initToken,
   storeOrUpdateWalletBalance,
   storeTransferEvent,
+  storeWalletActivity,
 } from './utils'
 import { NEONE, ONE, ZERO } from '../helpers/number'
+import { store } from '@graphprotocol/graph-ts'
 
 export function handleTransfer(event: Transfer): void {
   /**
@@ -49,6 +51,7 @@ export function handleWalletCreated(event: WalletCreated): void {
   let walletAddress = event.params._wallet
 
   let wallet = new Wallet(walletAddress.toHexString())
+  wallet.address = walletAddress
   wallet.owner = owner
   wallet.balance = ZERO
 
@@ -63,6 +66,14 @@ export function handleWalletReceive(event: Received): void {
   let wallet = Wallet.load(event.address.toHexString()) as Wallet
   wallet.balance = wallet.balance.plus(event.params.value)
 
+  storeWalletActivity(
+    event.transaction.hash.toHexString(),
+    wallet.id,
+    'Received',
+    event.params.sender,
+    event.params.value,
+  )
+
   wallet.save()
 }
 
@@ -73,7 +84,16 @@ export function handleWalletInvoked(event: Invoked): void {
    */
   let wallet = Wallet.load(event.address.toHexString()) as Wallet
   let value = event.params.value
+
   wallet.balance = wallet.balance.minus(value)
+
+  storeWalletActivity(
+    event.transaction.hash.toHexString(),
+    wallet.id,
+    'Invoked',
+    event.params.target,
+    event.params.value,
+  )
 
   wallet.save()
 }
@@ -86,5 +106,14 @@ export function handleWalletOwnerChanged(event: OwnerChanged): void {
   let wallet = Wallet.load(event.address.toHexString()) as Wallet
 
   wallet.owner = newOwner
+
+  storeWalletActivity(
+    event.transaction.hash.toHexString(),
+    wallet.id,
+    'OwnerChanged',
+    event.params.owner,
+    ZERO,
+  )
+
   wallet.save()
 }
