@@ -57,8 +57,8 @@ export function handleWalletCreated(event: WalletCreated): void {
   wallet.balance = ZERO
 
   wallet.save()
-  BaseWallet.create(walletAddress)
-  log.critical("Will start indexing events from address {}", [walletAddress.toHexString()])
+  // BaseWallet.create(walletAddress)
+  // log.critical("Will start indexing events from address {}", [walletAddress.toHexString()])
 }
 
 export function handleWalletReceive(event: Received): void {
@@ -66,6 +66,9 @@ export function handleWalletReceive(event: Received): void {
    * Updates the native balance of fuse cash wallet when it receives native coins
    * TODO: log the event inside TransferEvent entity with tokenAddress 0x0
    */
+  if(Wallet.load(event.address.toHexString()) == null) 
+    return
+
   let wallet = Wallet.load(event.address.toHexString()) as Wallet
   wallet.balance = wallet.balance.plus(event.params.value)
 
@@ -85,6 +88,9 @@ export function handleWalletInvoked(event: Invoked): void {
    * Updates the native balance of fuse cash  wallet when it sends a transaction
    * TODO: log the event inside the TransferEvent entity with tokeAddress 0x0
    */
+  if(Wallet.load(event.address.toHexString()) == null) 
+    return
+
   let wallet = Wallet.load(event.address.toHexString()) as Wallet
   let value = event.params.value
 
@@ -105,8 +111,14 @@ export function handleWalletOwnerChanged(event: OwnerChanged): void {
   /**
    * Handles wallet ownership transfer
    */
+  if(Wallet.load(event.address.toHexString()) == null) 
+    return
+
   let newOwner = event.params.owner
   let wallet = Wallet.load(event.address.toHexString()) as Wallet
+
+  if(wallet == null) 
+    return
 
   wallet.owner = newOwner
 

@@ -46,13 +46,12 @@ dataSources:
       eventHandlers:
         - event: 'WalletCreated(indexed address,indexed address)'
           handler: handleWalletCreated
-
-templates:
   - name: BaseWallet
     kind: ethereum/contract
     network: fuse
     source:
       abi: BaseWallet
+      startBlock: 3820385
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
