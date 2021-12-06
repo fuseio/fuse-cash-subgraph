@@ -41,8 +41,6 @@ dataSources:
       abis:
         - name: WalletFactory
           file: ./abis/WalletFactory.json
-        # - name: BaseWallet
-        #   file: ./abis/BaseWallet.json
       eventHandlers:
         - event: 'WalletCreated(indexed address,indexed address)'
           handler: handleWalletCreated

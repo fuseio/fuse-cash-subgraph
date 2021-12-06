@@ -4,7 +4,6 @@ import {
   OwnerChanged,
   Received,
 } from '../../generated/templates/BaseWallet/BaseWallet'
-import { BaseWallet } from '../../generated/templates'
 import { WalletCreated } from '../../generated/WalletFactory/WalletFactory'
 import { Transfer } from '../../generated/GoodDollar/ERC20'
 import {
@@ -14,7 +13,6 @@ import {
   storeWalletActivity,
 } from './utils'
 import { NEONE, ONE, ZERO } from '../helpers/number'
-import { log } from '@graphprotocol/graph-ts'
 
 export function handleTransfer(event: Transfer): void {
   /**
@@ -57,8 +55,6 @@ export function handleWalletCreated(event: WalletCreated): void {
   wallet.balance = ZERO
 
   wallet.save()
-  // BaseWallet.create(walletAddress)
-  // log.critical("Will start indexing events from address {}", [walletAddress.toHexString()])
 }
 
 export function handleWalletReceive(event: Received): void {
@@ -116,9 +112,6 @@ export function handleWalletOwnerChanged(event: OwnerChanged): void {
 
   let newOwner = event.params.owner
   let wallet = Wallet.load(event.address.toHexString()) as Wallet
-
-  if(wallet == null) 
-    return
 
   wallet.owner = newOwner
 
