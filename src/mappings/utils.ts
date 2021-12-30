@@ -1,5 +1,5 @@
 import { Address, BigInt, Bytes } from '@graphprotocol/graph-ts'
-import { Transfer, ERC20 } from '../../generated/GoodDollar/ERC20'
+import { Transfer, ERC20 } from '../../generated/AnyERC20Token/ERC20'
 import {
   Token,
   TransferEvent,

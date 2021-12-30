@@ -3,9 +3,9 @@ import {
   Invoked,
   OwnerChanged,
   Received,
-} from '../../generated/templates/BaseWallet/BaseWallet'
+} from '../../generated/BaseWallet/BaseWallet'
 import { WalletCreated } from '../../generated/WalletFactory/WalletFactory'
-import { Transfer } from '../../generated/GoodDollar/ERC20'
+import { Transfer } from '../../generated/AnyERC20Token/ERC20'
 import {
   initToken,
   storeOrUpdateWalletBalance,

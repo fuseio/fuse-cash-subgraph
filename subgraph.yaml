@@ -2,13 +2,12 @@ specVersion: 0.0.2
 schema:
   file: ./schema.graphql
 dataSources:
-  - name: GoodDollar
+  - name: AnyERC20Token
     kind: ethereum/contract
     network: fuse
     source:
       abi: ERC20
-      address: '0x495d133B938596C9984d462F007B676bDc57eCEC'
-      startBlock: 6246330
+      startBlock: 3820385
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -23,7 +22,7 @@ dataSources:
       eventHandlers:
         - event: 'Transfer(indexed address,indexed address,uint256)'
           handler: handleTransfer
-    # Wallet Factory data source for adding new wallets
+  # Wallet Factory data source for adding new wallets
   - name: WalletFactory
     kind: ethereum/contract
     network: fuse
